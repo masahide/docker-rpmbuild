@@ -1,16 +1,11 @@
-FROM centos:7
+FROM amazonlinux:2.0.20221210.0
 
 LABEL maintainer="YAMASAKI Masahide <masahide.y@gmail.com>"
 LABEL build_date="2023-01-02"
 
 RUN yum groupinstall -y "Development Tools" \
  && yum install -y \
-        kernel-devel \
-        kernel-headers \
         rpmdevtools \
-        yum-utils \
-        spectool \
-        epel-release \
  && yum clean all \
  && rm -r -f /var/cache/* \
  && rpmdev-setuptree
