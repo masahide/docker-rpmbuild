@@ -2,7 +2,7 @@ name: Create and publish a Docker image
 
 on:
   push:
-    branches: ['centos7']
+    branches: ['centos7', 'amzn2']
 
 env:
   REGISTRY: ghcr.io
