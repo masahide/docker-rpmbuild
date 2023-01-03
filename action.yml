@@ -1,0 +1,28 @@
+name: 'buildrpm'
+description: 'Build rpm package.'
+author: 'masahide'
+inputs:
+  distribution:
+    description: The distribution to run the build on.
+    default: centos7
+  spec:
+    description: 'specified spec file path.'
+    required: true
+  version:
+    description: 'Package version.'
+    required: true
+  hash:
+    description: 'github commit hash'
+    default: ''
+
+outputs:
+  rpmfiles:
+    description: 'files of *.rpm'
+
+runs:
+  using: 'docker'
+  image: 'docker://ghcr.io/masahide/docker-rpmbuild:centos7'
+
+branding:
+  icon: 'check'
+  color: 'blue'
