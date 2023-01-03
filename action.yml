@@ -16,7 +16,7 @@ inputs:
     default: ''
 
 outputs:
-  rpmfiles:
+  rpmfile:
     description: 'files of *.rpm'
 
 runs:
