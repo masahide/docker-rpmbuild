@@ -17,8 +17,7 @@ echo spec=$spec version=$version hash=$hash
 readonly RPMBUILD_DIR="${HOME}/rpmbuild"
 readonly RPMBUILD_SOURCE_DIR="${RPMBUILD_DIR}/SOURCES"
 #readonly RPMBUILD_SPEC_DIR="${RPMBUILD_DIR}/SPECS"
-
-mkdir -p "${RPMBUILD_SPEC_DIR}"
+#mkdir -p "${RPMBUILD_SPEC_DIR}"
 
 ls -la 
 ls -la  ${RPMBUILD_DIR}
