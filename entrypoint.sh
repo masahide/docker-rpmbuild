@@ -4,13 +4,15 @@ set -eo pipefail
 
 spec="$INPUT_SPEC"
 version="$INPUT_VERSION"
-hash=${GITHUB_SHA:0:7}
+hash="$INPUT_HASH"
+[[ -z $hash ]] && hash=${GITHUB_SHA:0:7}
 
 if [ -z "$spec" -o  -z "$version" ]; then
   echo "Failed! Missing spec or version."
   exit 1
 fi
 
+echo spec=$spec version=$version hash=$hash
 
 readonly RPMBUILD_DIR="${HOME}/rpmbuild"
 readonly RPMBUILD_SOURCE_DIR="${RPMBUILD_DIR}/SOURCES"
@@ -28,5 +30,5 @@ rpmbuild -bb\
 RPMS=${RPMBUILD_DIR}RPMS/$(uname -m)/*.rpm
 mv  ${RPMS} .
 ls -la *.rpm
-echo "rpmfile=\"$(ls *.rpm)\"" >> $GITHUB_OUTPUT
+echo "rpmfile=$(ls *.rpm)" >> $GITHUB_OUTPUT
 
