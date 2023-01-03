@@ -21,7 +21,7 @@ outputs:
 
 runs:
   using: 'docker'
-  image: 'docker://ghcr.io/masahide/docker-rpmbuild:${{ inputs.distribution }}'
+  image: 'docker://ghcr.io/masahide/docker-rpmbuild:centos7'
 
 branding:
   icon: 'check'
