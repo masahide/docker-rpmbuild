@@ -16,19 +16,21 @@ echo spec=$spec version=$version hash=$hash
 
 readonly RPMBUILD_DIR="${HOME}/rpmbuild"
 readonly RPMBUILD_SOURCE_DIR="${RPMBUILD_DIR}/SOURCES"
-readonly RPMBUILD_SPEC_DIR="${RPMBUILD_DIR}/SPECS"
+#readonly RPMBUILD_SPEC_DIR="${RPMBUILD_DIR}/SPECS"
 
 mkdir -p "${RPMBUILD_SPEC_DIR}"
-cp $spec "${RPMBUILD_SOURCE_DIR}/"
+
+ls -la 
+ls -la  ${RPMBUILD_DIR}
 
 rpmbuild -bb\
     --define "_version ${version}" \
     --define "_hash ${hash}" \
     --define "version ${version}" \
-    "RPMBUILD_SPEC_DIR/$spec"
+    $spec
 
-RPMS=${RPMBUILD_DIR}RPMS/$(uname -m)/*.rpm
+RPMS=${RPMBUILD_DIR}/RPMS/$(uname -m)/*.rpm
 mv  ${RPMS} .
-ls -la *.rpm
 echo "rpmfile=$(ls *.rpm)" >> $GITHUB_OUTPUT
+cat $GITHUB_OUTPUT
 
